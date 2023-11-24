@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+    - release/*
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  publish_windows_x64:
+    name: publish win-x64 
+    runs-on: windows-2022
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r win-x64
+  publish_windows_arm64:
+    name: publish win-arm64
+    runs-on: windows-2022
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r win-arm64
+  publish_linux_x64:
+    name: publish win-x64
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r win-x64
+  publish_linux_arm64:
+    name: publish win-arm64
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r win-arm64
+  publix_osx_x64:
+    name: publish osx-x64
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r osx-x64
+  publix_osx_arm64:
+    name: publish osx-arm64
+    runs-on: macos-13
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+    - name: Build ChatGPT.UI.Desktop
+      run: dotnet publish ./PublishAotDemo/PublishAotDemo.csproj -c Release -r osx-arm64
